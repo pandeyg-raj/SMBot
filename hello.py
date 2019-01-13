@@ -59,40 +59,6 @@ def manageScrums():
 def manageNotifications():
     return render_template("manageNotifications.html")
 
-@app.route("/addmember", methods=["GET", "POST"])
-#@login_required
-def addmember():
-    if request.method == 'GET':
-        return render_template("addmember.html")
-    conn = sqlite3.connect('database.db')
-    db = conn.cursor()
-
-    db.execute("INSERT INTO employees(sap_id,first_name,last_name,mail_id) VALUES (?,?,?,?) ",
-                (request.form.get("sapId"),request.form.get("fName"),request.form.get("lName"),request.form.get("eMail")))
-    conn.commit()
-    conn.close()
-    return apology("Sucess",200)
-
-@app.route("/removemember", methods=["GET", "POST"])
-#@login_required
-def removemember():
-    if request.method == 'GET':
-        return render_template("removemember.html")
-    conn = sqlite3.connect('database.db')
-    db = conn.cursor()
-    print("sapId")
-    print(request.form.get("sapId"))
-    SAPID = (request.form.get("sapId"),)
-    db.execute("SELECT sap_id FROM employees where sap_id = ?",SAPID)
-    data=db.fetchone()
-    if data is None:
-        print('There is no component named %s'%SAPID)
-        return apology("There is no component",9999)
-    else:
-        db.execute("DELETE from employees where sap_id = ?",SAPID)
-        conn.commit()
-    conn.close()
-    return apology("Sucess",200)
 
 def errorhandler(e):
     """Handle error"""

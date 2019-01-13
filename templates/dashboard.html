@@ -3,15 +3,10 @@
 
 
 
-{% block title %} RajP  {% endblock %}
-{% block head %}{% endblock %}
-{% block content %}
+    {% block title %} RajP  {% endblock %}
 
-    <div class="row">
-
-      <div class="col-sm-4"><a href="/manageTeams"><h4>Manage Teams</h4></a></div>
-      <div class="col-sm-4"><a href="/manageScrums"><h4>Manage Scrums</h4></a></div>
-      <div class="col-sm-4"><a href="/manageNotifications"><h4>Manage Notifications</h4></a></div>
-
-    </div>
-{% endblock %}
+    {% block content %}
+      <a href="/manageTeams">Manage Teams</a><br>
+      <a href="/manageScrums">Manage Scrums</a><br>
+      <a href="/manageNotifications">Manage Notifications</a><br>
+    {% endblock %}
